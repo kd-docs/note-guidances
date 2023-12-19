@@ -1,0 +1,49 @@
+\documentclass{report}
+
+% use geometry to set paper size in US letter
+\usepackage[letterpaper]{geometry}
+
+\usepackage{xcolor}
+\usepackage{soul}
+
+\usepackage[outputdir=build/]{minted}
+\usemintedstyle{sas}
+\setminted{autogobble}
+
+\usepackage{fontspec}
+\setmonofont{JetBrainsMono}[
+  Path=./fonts/JetBrainsMono/,
+  Scale=MatchLowercase,
+  Extension = .ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Italic,
+  BoldItalicFont=*-BoldItalic
+]
+
+\usepackage{parskip} % paragraph with have no indent but wider vertical gap
+\usepackage{graphicx} % figures
+\usepackage{csquotes}
+\usepackage{enumitem} % enumerate itemsep
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=cyan,
+  citecolor=blue,
+}
+
+%\includeonly{}
+\title{Misc Process Guides}
+\author{Kaidong Hu}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{pages/lots-of-jupyter-kernels.tex}
+
+\end{document}
+% vim:set fo+=wat fo-=l :
+% vim:set fdm=marker fdl=1 fmr=<<<,>>>:

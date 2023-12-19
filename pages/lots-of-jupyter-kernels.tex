@@ -1,0 +1,82 @@
+\chapter{Lots of Jupyter Kernels}
+\section{Get jupyter kernel paths}
+
+Jupyter notebook kernel definition are lived in data section. Use following 
+command to all PATH definitions, and a possible location for kernel 
+specification is \mintinline{bash}{$HOME/.local/share/jupyter/kernels}
+
+\begin{minted}{bash}
+# Example jupyter path result
+➜  ~ jupyter --paths
+config:
+    /home/kaidong/.jupyter
+    /home/kaidong/.local/etc/jupyter
+    /usr/etc/jupyter
+    /usr/local/etc/jupyter
+    /etc/jupyter
+data:
+    /home/kaidong/.local/share/jupyter
+    /usr/local/share/jupyter
+    /usr/share/jupyter
+runtime:
+    /home/kaidong/.local/share/jupyter/runtime
+\end{minted}
+
+\section{Add jupyter ruby kernel}
+
+Install \href{https://github.com/SciRuby/iruby}{IRuby} gem, and register 
+IRubyKernel using following command:
+
+\begin{minted}{bash}
+  gem install iruby
+  iruby register # add --force to overwrite
+\end{minted}
+
+\section{Add jupyter R kernel}
+
+First install latest R using homebrew.
+
+\begin{minted}{bash}
+  brew install r
+\end{minted}
+
+And install \href{https://github.com/IRkernel/IRkernel}{IRkernel}, by running 
+following command in R console:
+
+\begin{minted}{R}
+  install.packarges('IRkernel')
+  IRkernel::installspec(name = 'ir43', displayname = 'R 4.3')
+\end{minted}
+
+By default, \mintinline{R}{IRkernel::installspec()} will install kernal with 
+name "\rm(R)". Adding argument will result different kernel display inside 
+jupyter lab kernel list.
+
+\section{Add custom python environment kernel}
+
+Making a duplication of origin python3 kernel with desired name with 
+\mintinline{bash}{cp} (this will result the usage of default python3 logo).  
+Then edit argv part. Here is an example of singularity python kernel:
+
+\begin{minted}{json}
+  {
+   "argv": [
+    "singularity",
+    "exec",
+    "--bind",
+    "/home/kaidong:/home/kaidong",
+    "--nv",
+    "/path/to/source/torch.sif",
+    "python3",
+    "-m",
+    "ipykernel_launcher",
+    "-f",
+    "{connection_file}"
+   ],
+   "display_name": "Torch (ipykernel)",
+   "language": "python",
+   "metadata": {
+    "debugger": true
+   }
+ }
+\end{minted}
