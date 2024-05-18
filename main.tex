@@ -25,6 +25,10 @@
 \usepackage{graphicx} % figures
 \usepackage{csquotes}
 \usepackage{enumitem} % enumerate itemsep
+\usepackage[
+  citestyle=numeric,
+  sorting=none
+]{biblatex}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -37,6 +41,7 @@
 %\includeonly{}
 \title{Misc Process Guides}
 \author{Kaidong Hu}
+\addbibresource{main.bib}
 
 \begin{document}
 \maketitle
@@ -44,6 +49,7 @@
 
 \include{pages/lots-of-jupyter-kernels}
 \include{pages/list-of-items-setting-up-a-console}
+\include{pages/rails-fullstack-solutions}
 
 \end{document}
 % vim:set fo+=wat fo-=l :

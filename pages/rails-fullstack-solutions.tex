@@ -1,0 +1,51 @@
+\chapter{Rails fullstack solutions}
+\section{JS solution (Javascript, importmap, yarn(in vendor))}
+
+Regular JS library can be handle with \mintinline{ruby}{importmap}~\cite{importmap-rails}. Import a javascript package 
+pinned by importmap is simple as \mint{javascript}{import React from 'react'}
+
+Extra npm assets that doesn't fit into importmaps can be installed in \mintinline{bash}{/vendor/node_modules} and 
+symlinked into \mintinline{bash}{/vendor/javascript}, which in by default included in the assets pipeline.
+
+
+\section{Frontend solution (Bulma, dartsass-rails)}
+
+\mintinline{ruby}{bulma}~\cite{bulma} is install in rails through \mintinline{bash}{yarn add bulma}. Then it should be 
+symlinked into \mintinline{bash}{/vendor/javascript/bulma} and imported in 
+\mintinline{bash}{/app/assets/stylesheets/application.scss} by \mintinline{sass}{@use 'bulma/sass';}.
+
+Inorder to use sass mixins in rails, \mintinline{ruby}{dartsass-rails}~\cite{dartsass-rails} is required for css 
+compilation. After \mintinline{ruby}{dartsass-rails} is installed, run \mintinline{bash}{rails dartsass:install} to 
+complete installation. After this is done, rails development server should be run with command 
+\mintinline{bash}{./bin/dev} in order to watch and complile sass code in runtime. In production, \mintinline{bash}{rails 
+assets:precompile; rails s -e production} is still available for hosting the application.
+
+\section{Page morphing solution (turbo-rails, actioncable)}
+
+\section{Multimedia content solution (Actiontext)}
+
+\section{Authenticate solution (devise)}
+
+First, install devise into rails application using
+\begin{minted}{bash}
+  bundle add devise
+  rails g devise:install
+\end{minted}
+
+Devise module is generated with \mintinline{bash}{rails g devise users}, which will generate a model called users.
+In case a non-default controller is needed for devise accounts, use
+\begin{minted}{bash}
+  rails g devise:controllers account
+  rails g devise:views account
+\end{minted}
+
+And routing to the new controller should be set in new controller with
+\begin{minted}{ruby}
+# /config/routes.rb
+Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: "account/sessions" }
+\end{minted}
+
+
+\defbibheading{Links}{\section*{See also:}}
+\printbibliography[heading=Links]
