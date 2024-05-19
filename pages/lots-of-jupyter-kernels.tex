@@ -52,6 +52,13 @@ By default, \mintinline{R}{IRkernel::installspec()} will install kernal with
 name "\rm(R)". Adding argument will result different kernel display inside 
 jupyter lab kernel list.
 
+\section{Add jupyter python kernel}
+
+A jupyter kernel for specific environment can be installed by \mint{bash}{pip install ipykernel}
+And use following command to register custom kernel into jupyter lab \mint{bash}{
+python -m ipykernel install --user --name myenv --display-name "Python (myenv)"
+}
+
 \section{Add custom python environment kernel}
 
 Making a duplication of origin python3 kernel with desired name with 
