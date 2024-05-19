@@ -26,9 +26,15 @@
 \usepackage{csquotes}
 \usepackage{enumitem} % enumerate itemsep
 \usepackage[
+  refsection=chapter,
   citestyle=numeric,
   sorting=none
 ]{biblatex}
+
+\DeclarePrintbibliographyDefaults{
+  heading=subbibintoc,
+  title=See also:
+}
 
 \usepackage{hyperref}
 \hypersetup{
