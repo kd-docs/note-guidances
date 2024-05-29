@@ -1,19 +1,48 @@
 \chapter{List of items to setup a console}
 
 \section{Configuration files need to be changed}
+
+\textbf{Update} There's a new gist in github that contains multiple updated dot files. Clone and install them before 
+continue with following setups.
+
 \begin{enumerate}
 	\item .vim
 	\item .zshrc (oh-my-zsh with customizations)
 	\item .dircolor
   \item .gitconfig .gitignore (global git ignore)
   \item .config/ranger/rc.conf
-
 \end{enumerate}
 
 \section{Tools that helps working on shell}
-\begin{enumerate}
-  \item zsh vim git
-  \item pipx -> ranger
-  \item homebrew
-  \item rvm
-\end{enumerate}
+
+\setlist[itemize]{nosep}
+\begin{itemize}
+  \item Necessary tools
+    \begin{itemize}
+      \item zsh
+      \item git
+      \item vim
+    \end{itemize}
+  \item Package managers
+    \begin{itemize}
+      \item homebrew
+      \item pipx \quad\Rightarrow\quad ranger-fm
+    \end{itemize}
+  \item Develop version managements
+    \begin{itemize}
+      \item rvm
+    \end{itemize}
+  \item Desktop applications
+    \begin{itemize}
+      \item kitty terminal emulator
+      \item xpad (ubuntu's stickers)
+    \end{itemize}
+\end{itemize}
+
+\section{Set Kitty as the Ubuntu default terminal}
+
+\begin{minted}{bash}
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50
+sudo update-alternatives --config x-terminal-emulator
+\end{minted}
+

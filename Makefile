@@ -4,20 +4,20 @@ SHELL = /bin/bash
 # compilation every time.
 
 default: all
-	xelatex --shell-escape --output-directory=build/ main.tex
+	lualatex --shell-escape --interaction=nonstopmode --output-directory=build/ main.tex
 	@read -n1 -p "Open it? ([n]/y)" ans ; if [ "$$ans" = "y" ]; then zathura build/main.pdf & fi
 
 build/pages:
 	mkdir -p build/pages
 
 full: | build/pages
-	xelatex --shell-escape --output-directory=build/ main.tex
+	lualatex --shell-escape --interaction=nonstopmode --output-directory=build/ main.tex
 	biber build/main
-	xelatex --shell-escape --output-directory=build/ main.tex
-	xelatex --shell-escape --output-directory=build/ main.tex
+	lualatex --shell-escape --interaction=batchmode --output-directory=build/ main.tex
+	lualatex --shell-escape --interaction=batchmode --output-directory=build/ main.tex
 
 show:
-	zathura build/main.pdf
+	zathura build/main.pdf &
 
 biber:
 	biber build/main
